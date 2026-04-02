@@ -1,34 +1,44 @@
 import { useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
-const WA_LINK = "https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20consultar%20por%20un%20producto";
+import imgPolloEntero from "../assets/products/pollo_entero_1775090313623.png";
+import imgPataMuslo from "../assets/products/pata_muslo_1775090325607.png";
+import imgSuprema from "../assets/products/suprema_pollo_1775090341127.png";
+import imgArroz from "../assets/products/arroz_paquete_1775090358109.png";
+import imgAceite from "../assets/products/aceite_girasol_1775090371897.png";
+import imgFideos from "../assets/products/fideos_paquete_1775090383942.png";
+import imgHuevos from "../assets/products/huevos_docena_1775090399073.png";
+import imgLeche from "../assets/products/leche_sachet_1775090414750.png";
+import imgYogurt from "../assets/products/yogurt_botella_1775090428174.png";
 
-type Categoria = "Todos" | "Pollería" | "Despensa" | "Verdulería" | "Lácteos";
+type Categoria = "Todos" | "Pollería" | "Almacén" | "Lácteos";
 
 interface Producto {
   nombre: string;
   precio: string;
   categoria: Categoria;
   desc: string;
+  img: string;
 }
 
 const productos: Producto[] = [
-  { nombre: "Pollo Entero", precio: "$3.800", categoria: "Pollería", desc: "Fresco, aprox 2.5kg" },
-  { nombre: "Pata-Muslo x kg", precio: "$2.200", categoria: "Pollería", desc: "Corte fresco del día" },
-  { nombre: "Suprema x kg", precio: "$3.500", categoria: "Pollería", desc: "Sin hueso, lista para cocinar" },
-  { nombre: "Arroz x 1kg", precio: "$1.200", categoria: "Despensa", desc: "Arroz largo fino" },
-  { nombre: "Aceite Girasol 1.5L", precio: "$2.800", categoria: "Despensa", desc: "Primera calidad" },
-  { nombre: "Fideos x 500g", precio: "$800", categoria: "Despensa", desc: "Variedad de cortes" },
-  { nombre: "Tomate x kg", precio: "$1.500", categoria: "Verdulería", desc: "Redondo, de estación" },
-  { nombre: "Papa x kg", precio: "$900", categoria: "Verdulería", desc: "Para todo uso" },
-  { nombre: "Leche Sachet 1L", precio: "$850", categoria: "Lácteos", desc: "Entera" },
-  { nombre: "Huevos x 12", precio: "$2.400", categoria: "Lácteos", desc: "De granja" },
+  { nombre: "Pollo Entero", precio: "$3.800", categoria: "Pollería", desc: "Fresco, aprox 2.5kg", img: imgPolloEntero },
+  { nombre: "Pata-Muslo x kg", precio: "$2.200", categoria: "Pollería", desc: "Corte fresco del día", img: imgPataMuslo },
+  { nombre: "Suprema x kg", precio: "$3.500", categoria: "Pollería", desc: "Sin hueso, lista para cocinar", img: imgSuprema },
+  { nombre: "Arroz x 1kg", precio: "$1.200", categoria: "Almacén", desc: "Arroz largo fino", img: imgArroz },
+  { nombre: "Aceite Girasol 1.5L", precio: "$2.800", categoria: "Almacén", desc: "Primera calidad", img: imgAceite },
+  { nombre: "Fideos x 500g", precio: "$800", categoria: "Almacén", desc: "Variedad de cortes", img: imgFideos },
+  { nombre: "Huevos x 12", precio: "$2.400", categoria: "Almacén", desc: "De granja", img: imgHuevos },
+  { nombre: "Leche Sachet 1L", precio: "$850", categoria: "Lácteos", desc: "Entera", img: imgLeche },
+  { nombre: "Yogurt de Litro", precio: "$1.500", categoria: "Lácteos", desc: "Sabor frutilla o vainilla", img: imgYogurt },
 ];
 
-const categorias: Categoria[] = ["Todos", "Pollería", "Despensa", "Verdulería", "Lácteos"];
+const categorias: Categoria[] = ["Todos", "Pollería", "Almacén", "Lácteos"];
 
 const Catalogo = () => {
   const [cat, setCat] = useState<Categoria>("Todos");
+  const { addToCart } = useCart();
   const filtered = cat === "Todos" ? productos : productos.filter((p) => p.categoria === cat);
 
   return (
@@ -56,8 +66,11 @@ const Catalogo = () => {
         {/* Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((p) => (
-            <div key={p.nombre} className="card-market p-5">
-              <div className="flex items-start justify-between">
+            <div key={p.nombre} className="card-market p-5 flex flex-col h-full overflow-hidden">
+              <div className="w-full h-48 mb-4 rounded-md overflow-hidden relative bg-white flex items-center justify-center">
+                <img src={p.img} alt={p.nombre} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="flex items-start justify-between flex-1">
                 <div>
                   <span className="inline-block font-body text-xs font-semibold bg-secondary/10 text-secondary px-2 py-0.5 rounded mb-2">
                     {p.categoria}
@@ -67,15 +80,13 @@ const Catalogo = () => {
                 </div>
                 <span className="font-heading text-xl font-bold text-primary whitespace-nowrap">{p.precio}</span>
               </div>
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp mt-4 text-sm py-2 px-4"
+              <button
+                onClick={() => addToCart({ nombre: p.nombre, precio: p.precio })}
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-auto pt-4 text-sm py-2 px-4 rounded font-bold flex items-center justify-center gap-2 transition-colors"
               >
-                <MessageCircle size={16} />
-                Consultar por WA
-              </a>
+                <ShoppingCart size={16} />
+                Agregar al Carrito
+              </button>
             </div>
           ))}
         </div>

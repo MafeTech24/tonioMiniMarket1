@@ -5,8 +5,7 @@ import gallery4 from "@/assets/gallery-4.jpg";
 
 const images = [
   { src: gallery1, alt: "Pollo grillado fresco" },
-  { src: gallery2, alt: "Despensa surtida" },
-  { src: gallery3, alt: "Verduras frescas del mercado" },
+  { src: gallery2, alt: "Almacén surtido" },
   { src: gallery4, alt: "Huevos y lácteos" },
 ];
 
@@ -16,7 +15,7 @@ const Galeria = () => (
       <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary text-center mb-10">
         GALERÍA
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
         {images.map((img) => (
           <div
             key={img.alt}

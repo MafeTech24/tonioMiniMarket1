@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
-
-const WA_LINK = "https://wa.me/549XXXXXXXXXX?text=Hola%20Tonio!%20Quiero%20hacer%20un%20pedido";
+import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.png";
+import { Cart } from "./Cart";
 
 const navItems = [
   { label: "Inicio", href: "#inicio" },
@@ -18,13 +18,11 @@ const Navbar = () => {
     <nav className="bg-navbar sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         {/* Logo */}
-        <a href="#inicio" className="flex flex-col leading-tight">
-          <span className="font-heading text-2xl md:text-3xl font-extrabold text-navbar-foreground tracking-wide">
-            TONIO
-          </span>
-          <span className="font-body text-[10px] md:text-xs text-navbar-foreground/80 tracking-wider">
-            Despensa &amp; Pollería · Las Palmas
-          </span>
+        <a href="#inicio" className="flex items-center">
+          <img
+            src={logo}
+            className="h-12 md:h-16 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop links */}
@@ -38,20 +36,20 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-sm py-2 px-4">
-            <MessageCircle size={18} />
-            WhatsApp
-          </a>
+          <Cart />
         </div>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-navbar-foreground"
-          aria-label="Menú"
-        >
-          {open ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <Cart />
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-navbar-foreground"
+            aria-label="Menú"
+          >
+            {open ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -67,12 +65,6 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <div className="px-6 pt-2">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-sm py-2 px-4 w-full justify-center">
-              <MessageCircle size={18} />
-              WhatsApp
-            </a>
-          </div>
         </div>
       )}
     </nav>

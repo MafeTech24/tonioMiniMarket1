@@ -12,7 +12,7 @@
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 8 100% 40%;
+    --primary: 1.2 82.8% 45.7%;
     --primary-foreground: 0 0% 100%;
     --secondary: 122 46% 33%;
     --secondary-foreground: 0 0% 100%;
@@ -24,13 +24,13 @@
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 8 100% 40%;
+    --ring: 1.2 82.8% 45.7%;
     --radius: 0.5rem;
 
-    --navbar: 8 100% 40%;
+    --navbar: 1.2 82.8% 45.7%;
     --navbar-foreground: 0 0% 100%;
     --offer-bg: 0 100% 97%;
-    --offer-badge: 8 100% 40%;
+    --offer-badge: 1.2 82.8% 45.7%;
     --section-alt: 120 30% 97%;
     --footer-bg: 0 0% 10%;
     --footer-foreground: 0 0% 100%;

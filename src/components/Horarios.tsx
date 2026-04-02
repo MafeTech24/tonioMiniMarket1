@@ -13,34 +13,37 @@ const Horarios = () => (
             <Clock size={28} className="text-primary shrink-0 mt-1" />
             <div>
               <h3 className="font-heading text-lg font-bold text-foreground">Horarios de Atención</h3>
-              <p className="font-body text-muted-foreground">Lunes a Sábado: 8:00 – 13:00 / 17:00 – 21:00</p>
-              <p className="font-body text-muted-foreground">Domingos: 8:00 – 13:00</p>
+              <p className="font-body text-muted-foreground">Lunes a Viernes: 8 hs a 13 hs - 17 hs a 21 hs</p>
+              <p className="font-body text-muted-foreground">Sábado y Feriados: 8:30 hs a 13:30 hs - 17 hs a 21 hs</p>
             </div>
           </div>
           <div className="flex gap-4 items-start">
             <MapPin size={28} className="text-primary shrink-0 mt-1" />
             <div>
               <h3 className="font-heading text-lg font-bold text-foreground">Dirección</h3>
-              <p className="font-body text-muted-foreground">Barrio Las Palmas, Córdoba Capital, Argentina</p>
+              <p className="font-body text-muted-foreground">Falucho 275, Bº Las Palmas.<br/>Córdoba Capital, Argentina.</p>
             </div>
           </div>
           <div className="flex gap-4 items-start">
             <Phone size={28} className="text-primary shrink-0 mt-1" />
             <div>
               <h3 className="font-heading text-lg font-bold text-foreground">Teléfono / WhatsApp</h3>
-              <p className="font-body text-muted-foreground">+54 9 XXX XXX XXXX</p>
+              <p className="font-body text-muted-foreground">3516 527241</p>
             </div>
           </div>
         </div>
 
-        {/* Map placeholder */}
-        <div className="rounded-lg overflow-hidden border border-border h-64 md:h-auto min-h-[250px] bg-muted flex items-center justify-center">
-          <div className="text-center p-4">
-            <MapPin size={48} className="text-secondary mx-auto mb-2" />
-            <p className="font-body text-sm text-muted-foreground">
-              Mapa próximamente.<br />Barrio Las Palmas, Córdoba Capital.
-            </p>
-          </div>
+        {/* Map */}
+        <div className="rounded-lg overflow-hidden border border-border h-64 md:h-auto min-h-[300px] bg-muted">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.4101221071382!2d-64.24479778959648!3d-31.402824695487222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432995bc585decf%3A0x1f0069122385411f!2sTonio%20Despensa%20y%20polleria!5e0!3m2!1ses!2sar!4v1775100737390!5m2!1ses!2sar" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0, minHeight: '300px' }} 
+            allowFullScreen={false} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </div>

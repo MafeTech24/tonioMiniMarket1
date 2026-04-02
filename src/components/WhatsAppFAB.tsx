@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-const WA_LINK = "https://wa.me/549XXXXXXXXXX?text=Hola%20Tonio!%20Quiero%20hacer%20un%20pedido";
+const WA_LINK = "https://wa.me/5493516527241?text=Hola%20Tonio!%20Quiero%20hacer%20un%20pedido";
 
 const WhatsAppFAB = () => (
   <a

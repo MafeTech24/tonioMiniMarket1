@@ -1,7 +1,7 @@
 import { Truck, Clock, ShieldCheck, ThumbsUp } from "lucide-react";
 
 const items = [
-  { icon: Truck, text: "Envíos en el barrio" },
+  { icon: Truck, text: "Envío a Domicilio" },
   { icon: Clock, text: "Atención rápida" },
   { icon: ShieldCheck, text: "Calidad garantizada" },
   { icon: ThumbsUp, text: "Clientes satisfechos" },
